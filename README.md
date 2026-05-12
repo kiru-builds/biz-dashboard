@@ -209,3 +209,29 @@ Stack: React · Claude API · Recharts · Vercel
 ---
 
 > ⭐ If this project helped you, give it a star on GitHub!
+## 👩‍💻 Author
+
+<div align="center">
+
+### *Kirthika Rajendran*
+#### AI Tools Developer | React | Python | Claude AI
+
+[
+
+![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+
+](https://github.com/kiru-builds)
+[
+
+![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)
+
+](https://linkedin.com/in/kirthika)
+[
+
+![Portfolio](https://img.shields.io/badge/Portfolio-D4A843?style=for-the-badge&logo=vercel&logoColor=white)
+
+](https://kiru-builds.github.io/)
+
+</div>
+
+---
