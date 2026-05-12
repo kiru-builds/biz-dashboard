@@ -1,70 +1,211 @@
-# Getting Started with Create React App
+# 📈 ProfitPulse AI — E-Commerce Profit Optimization SaaS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![ProfitPulse](https://img.shields.io/badge/ProfitPulse-SaaS%20v4.0-00ff87?style=for-the-badge)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
+![Claude AI](https://img.shields.io/badge/Claude-AI%20Powered-7c3aed?style=for-the-badge)
+![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?style=for-the-badge&logo=vercel)
 
-## Available Scripts
+> **Live Demo → [profitpulse-sandy.vercel.app](https://profitpulse-sandy.vercel.app/)**
 
-In the project directory, you can run:
+A premium AI-powered business analytics dashboard built for e-commerce businesses. Upload your sales data, get instant AI insights, revenue forecasts, and smart alerts — all in one place.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 📊 Dashboard
+- Real-time KPI cards — Revenue, Profit, Orders, Margin
+- Interactive Revenue vs Profit area chart
+- Top products with margin progress bars
+- Smart alerts auto-generated from your data
 
-### `npm test`
+### 🧠 AI Insights Panel
+- 6 auto-generated business intelligence insights
+- Month-over-month analysis table
+- Specific findings like *"Revenue dropped 12% in Feb due to low orders"*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🤖 AI Business Analyst (Claude API)
+- Full chat interface powered by Claude AI
+- Quick suggestion buttons
+- Ask anything — *"Why did profit drop?"*, *"Predict next month revenue"*
+- Context-aware responses using your actual business data
 
-### `npm run build`
+### 🔮 Revenue Forecast
+- ML-powered 6-month revenue projection
+- Visual trend chart with actual vs forecast
+- Written AI forecast summary
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🚨 Smart Alerts
+- Auto-detects margin below threshold
+- Revenue drop warnings
+- Growth signals
+- WhatsApp and Email alert actions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 📱 WhatsApp Automation
+- Send instant business alerts to your phone
+- Configurable margin threshold
+- One-click WhatsApp deep link with full report
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🛍️ Product Analytics
+- Revenue and margin breakdown per product
+- Ranked with progress bars
+- Units sold tracking
 
-### `npm run eject`
+### 👥 Multi-Tenant Client Management
+- Role-based access (Admin / Client)
+- Switch between multiple company workspaces
+- Per-client data isolation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 📋 Activity Feed
+- Live business event history
+- System notifications
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ⚙️ Settings
+- Workspace switcher (5 tenants)
+- Profile management
+- Email report scheduling
+- CSV export
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
+- Node.js v18+
+- npm or yarn
+- Claude API key from [console.anthropic.com](https://console.anthropic.com)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+# Clone the repository
+git clone https://github.com/kiru-builds/profitpulse.git
 
-### Code Splitting
+# Navigate into project
+cd profitpulse
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Install dependencies
+npm install
 
-### Analyzing the Bundle Size
+# Install recharts
+npm install recharts
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Configuration
 
-### Making a Progressive Web App
+Create a `.env` file in the root directory:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```env
+REACT_APP_API_KEY=sk-ant-your-claude-api-key-here
+```
 
-### Advanced Configuration
+Or directly in `src/App.js` line 5:
+```js
+const API_KEY = "sk-ant-your-key-here";
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Run locally
 
-### Deployment
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Opens at `http://localhost:3000`
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔐 Demo Accounts
+
+| Account | Email | Password | Role |
+|---------|-------|----------|------|
+| ⚡ Admin | admin@profitpulse.com | admin123 | Full Access |
+| 🖥️ TechStore | ravi@techstore.com | tech123 | Client |
+| 👗 FashionHub | priya@fashionhub.com | fashion123 | Client |
+
+Each account has unique business data, products, and analytics.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| React 18 | Frontend framework |
+| Recharts | Charts and data visualization |
+| Claude API (claude-sonnet-4-6) | AI insights and chat |
+| Vercel | Deployment and hosting |
+| CSS-in-JS | Styling |
+
+---
+
+## 📁 Project Structure
+
+```
+profitpulse/
+├── public/
+│   └── index.html
+├── src/
+│   ├── App.js          ← Main dashboard (all features)
+│   ├── index.js
+│   └── index.css
+├── .env                ← API key (not committed)
+├── .gitignore
+├── package.json
+└── README.md
+```
+
+---
+
+## 🌐 Deployment
+
+### Deploy on Vercel (recommended)
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy
+vercel
+```
+
+Or connect your GitHub repo at [vercel.com](https://vercel.com) for auto-deploy on every push.
+
+**Add environment variable in Vercel:**
+- Dashboard → Project → Settings → Environment Variables
+- Add `REACT_APP_API_KEY` = your Claude API key
+
+---
+
+## 💰 Use Cases
+
+This dashboard is built for:
+- **Small e-commerce businesses** — understand their data without a data team
+- **D2C brands** — track product performance and margins
+- **Freelance clients** — sell as a white-label analytics solution
+- **Startups** — monitor growth metrics in real time
+
+**Selling price: ₹5,000 – ₹30,000 per client**
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, open an issue first.
+
+---
+
+## 📄 License
+
+MIT License — free to use and modify.
+
+---
+
+## 👨‍💻 Built By
+
+**Kiru** — AI & Data Science Student
+GitHub: [@kiru-builds](https://github.com/kiru-builds)
+Stack: React · Claude API · Recharts · Vercel
+
+---
+
+> ⭐ If this project helped you, give it a star on GitHub!
