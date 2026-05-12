@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import {
-  AreaChart, Area, BarChart, Bar, Cell,
-  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine
+  AreaChart, Area, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine
 } from "recharts";
 
 const WORKSPACES = {
@@ -243,6 +242,7 @@ export default function ProfitPulse(){
     setInsightsLoading(false);
   };
 
+  // FIX 1: Removed stray "ss" that was causing a syntax error
   const sendAI=async(q)=>{
     const question=q||aiInput.trim();
     if(!question)return;
@@ -319,7 +319,6 @@ export default function ProfitPulse(){
   const G="#00ff87",B="#60efff",Y="#ffd93d",R="#ff6b6b",P="#c77dff";
   const AC=ws?.color||G;
 
-  // ALL nav items including orders, clients, settings
   const navItems=[
     {icon:"⚡",label:"Dashboard", pg:"dashboard", group:"main"},
     {icon:"🤖",label:"AI Insights",pg:"ai",        group:"main"},
@@ -336,9 +335,6 @@ export default function ProfitPulse(){
   const mainNav=navItems.filter(n=>n.group==="main");
   const manageNav=navItems.filter(n=>n.group==="manage");
 
-  // ══════════════════════════════
-  // LOGIN
-  // ══════════════════════════════
   if(screen==="login")return(
     <div style={{fontFamily:"'DM Sans',system-ui,sans-serif",background:bg,minHeight:"100vh",display:"flex",color:text,overflow:"hidden"}}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;800&display=swap');*{box-sizing:border-box}input{outline:none}input::placeholder{color:#3d5a80}input:focus{border-color:#00ff87!important}button{transition:opacity 0.2s}button:hover{opacity:0.85}`}</style>
@@ -401,17 +397,12 @@ export default function ProfitPulse(){
     </div>
   );
 
-  // ══════════════════════════════
-  // MAIN APP
-  // ══════════════════════════════
   return(
     <div style={{fontFamily:"'DM Sans',system-ui,sans-serif",background:bg,minHeight:"100vh",color:text,display:"flex",flexDirection:"column",fontSize:13}}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;800&display=swap');*{box-sizing:border-box}::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:#1a2840;border-radius:4px}button:hover{opacity:0.85}input,select{outline:none}input:focus{border-color:#00ff87!important}`}</style>
 
-      {/* TOAST */}
       {toast&&<div style={{position:"fixed",top:14,right:14,zIndex:9999,padding:"11px 18px",background:toast.type==="success"?"rgba(0,255,135,0.12)":"rgba(255,107,107,0.12)",border:"1px solid "+(toast.type==="success"?G:R),borderRadius:10,color:toast.type==="success"?G:R,fontSize:12,fontWeight:600,boxShadow:"0 8px 32px rgba(0,0,0,0.5)"}}>{toast.msg}</div>}
 
-      {/* WHATSAPP MODAL */}
       {waModal&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.75)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div style={{background:card,border:"1px solid "+border,borderRadius:16,padding:28,width:420,boxShadow:"0 24px 64px rgba(0,0,0,0.6)"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20}}>
@@ -428,7 +419,6 @@ export default function ProfitPulse(){
         </div>
       </div>}
 
-      {/* EMAIL MODAL */}
       {emailModal&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.75)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div style={{background:card,border:"1px solid "+border,borderRadius:16,padding:28,width:420,boxShadow:"0 24px 64px rgba(0,0,0,0.6)"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20}}>
@@ -451,7 +441,6 @@ export default function ProfitPulse(){
         </div>
       </div>}
 
-      {/* FLOATING AI CHAT */}
       {aiChatOpen&&<div style={{position:"fixed",bottom:80,right:20,width:360,height:460,background:card,border:"1px solid "+border,borderRadius:16,zIndex:1000,display:"flex",flexDirection:"column",boxShadow:"0 24px 64px rgba(0,0,0,0.6)"}}>
         <div style={{padding:"13px 18px",borderBottom:"1px solid "+border,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
           <div style={{display:"flex",alignItems:"center",gap:8}}><span style={{fontSize:18}}>🤖</span><div><p style={{margin:0,fontWeight:700,fontSize:13,color:G}}>AI Analyst</p><p style={{margin:0,fontSize:9,color:sub}}>Powered by Claude</p></div></div>
@@ -478,17 +467,13 @@ export default function ProfitPulse(){
         </div>
       </div>}
 
-      {/* FLOATING AI BUTTON */}
       <button onClick={()=>setAiChatOpen(o=>!o)} title="AI Analyst" style={{position:"fixed",bottom:20,right:20,width:50,height:50,borderRadius:"50%",background:"linear-gradient(135deg,#00ff87,#60efff)",border:"none",cursor:"pointer",fontSize:22,boxShadow:"0 4px 24px rgba(0,255,135,0.4)",zIndex:999,display:"flex",alignItems:"center",justifyContent:"center"}}>🤖</button>
 
-      {/* ══ HEADER ══ */}
       <header style={{background:card,borderBottom:"1px solid "+border,padding:"0 18px",height:54,display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,zIndex:200,flexShrink:0}}>
-        {/* LEFT: LOGO + WORKSPACE */}
         <div style={{display:"flex",alignItems:"center",gap:10}}>
           <div style={{width:26,height:26,borderRadius:7,background:"linear-gradient(135deg,#00ff87,#60efff)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:13}}>⚡</div>
           <span style={{fontWeight:800,fontSize:17,background:"linear-gradient(90deg,#00ff87,#60efff)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",letterSpacing:-0.5}}>ProfitPulse</span>
           <span style={{fontSize:9,color:G,background:"rgba(0,255,135,0.1)",border:"1px solid rgba(0,255,135,0.2)",padding:"1px 7px",borderRadius:20,fontWeight:700}}>PRO</span>
-          {/* Workspace switcher */}
           <div style={{display:"flex",gap:4,marginLeft:6}}>
             {Object.entries(WORKSPACES).map(([id,w])=>(
               <button key={id} onClick={()=>{setWsId(id);setUploadedData(null);generateAIInsights(w.monthly,w.products,w.name);}} style={{padding:"3px 10px",background:wsId===id?w.color+"22":"transparent",border:"1px solid "+(wsId===id?w.color+"44":border),borderRadius:20,cursor:"pointer",color:wsId===id?w.color:sub,fontSize:10,fontWeight:wsId===id?700:400}}>
@@ -498,27 +483,19 @@ export default function ProfitPulse(){
           </div>
         </div>
 
-        {/* CENTER: DATE FILTER */}
         <div style={{display:"flex",alignItems:"center",gap:8}}>
           <select value={dateFilter} onChange={e=>setDateFilter(e.target.value)} style={{padding:"4px 10px",background:card2,border:"1px solid "+border,borderRadius:7,color:text,fontSize:11,cursor:"pointer"}}>
             {["Today","Last 7 Days","Last 30 Days","Last 90 Days","This Year"].map(f=><option key={f}>{f}</option>)}
           </select>
         </div>
 
-        {/* RIGHT: WHATSAPP + EMAIL + NOTIF + USER + LOGOUT */}
         <div style={{display:"flex",alignItems:"center",gap:8}}>
-
-          {/* WHATSAPP BUTTON */}
           <button onClick={()=>setWaModal(true)} style={{display:"flex",alignItems:"center",gap:6,padding:"6px 13px",background:"rgba(37,211,102,0.08)",border:"1px solid rgba(37,211,102,0.25)",borderRadius:20,cursor:"pointer",color:"#25D366",fontSize:12,fontWeight:700}}>
             <span style={{fontSize:14}}>📱</span> WhatsApp
           </button>
-
-          {/* EMAIL BUTTON */}
           <button onClick={()=>setEmailModal(true)} style={{display:"flex",alignItems:"center",gap:6,padding:"6px 13px",background:"rgba(0,255,135,0.07)",border:"1px solid rgba(0,255,135,0.2)",borderRadius:20,cursor:"pointer",color:G,fontSize:12,fontWeight:700}}>
             <span style={{fontSize:14}}>📧</span> Email
           </button>
-
-          {/* NOTIFICATION */}
           <div style={{position:"relative"}}>
             <button onClick={()=>{setNotifOpen(o=>!o);setUnread(0);}} style={{padding:"5px 10px",background:notifOpen?card2:"transparent",border:"1px solid "+(notifOpen?border:"transparent"),borderRadius:8,cursor:"pointer",color:text,fontSize:14,position:"relative"}}>
               🔔
@@ -534,8 +511,6 @@ export default function ProfitPulse(){
               ))}
             </div>}
           </div>
-
-          {/* USER */}
           <div style={{display:"flex",alignItems:"center",gap:7,padding:"4px 10px",background:card2,border:"1px solid "+border,borderRadius:20}}>
             <div style={{width:22,height:22,borderRadius:"50%",background:"linear-gradient(135deg,"+AC+","+AC+"88)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,fontWeight:800,color:"#050a14"}}>{user?.avatar}</div>
             <span style={{fontSize:11,fontWeight:600}}>{user?.name?.split(" ")[0]}</span>
@@ -546,10 +521,7 @@ export default function ProfitPulse(){
       </header>
 
       <div style={{display:"flex",flex:1,overflow:"hidden"}}>
-        {/* ══ SIDEBAR ══ */}
         <aside style={{width:192,background:card,borderRight:"1px solid "+border,padding:"14px 10px",display:"flex",flexDirection:"column",gap:2,flexShrink:0,overflowY:"auto"}}>
-
-          {/* FILE UPLOAD */}
           <div style={{marginBottom:14}}>
             <p style={{fontSize:9,fontWeight:700,letterSpacing:1.5,color:sub,marginBottom:7,textTransform:"uppercase"}}>Upload Data</p>
             <div onDrop={e=>{e.preventDefault();setIsDrag(false);processFile(e.dataTransfer.files[0]);}} onDragOver={e=>{e.preventDefault();setIsDrag(true);}} onDragLeave={()=>setIsDrag(false)} onClick={()=>fileRef.current.click()}
@@ -563,7 +535,6 @@ export default function ProfitPulse(){
             <p style={{fontSize:9,color:sub,marginTop:4,textAlign:"center",lineHeight:1.4}}>Columns: month, revenue,<br/>profit, orders (optional)</p>
           </div>
 
-          {/* MAIN NAV */}
           <p style={{fontSize:9,fontWeight:700,letterSpacing:1.5,color:sub,marginBottom:4,textTransform:"uppercase"}}>Analytics</p>
           {mainNav.map(({icon,label,pg,badge})=>(
             <div key={pg} onClick={()=>setPage(pg)} style={{display:"flex",alignItems:"center",gap:8,padding:"8px 10px",borderRadius:8,marginBottom:1,background:page===pg?"rgba(0,255,135,0.07)":"transparent",borderLeft:page===pg?"2px solid "+G:"2px solid transparent",cursor:"pointer",transition:"all 0.15s"}}>
@@ -573,7 +544,6 @@ export default function ProfitPulse(){
             </div>
           ))}
 
-          {/* MANAGE NAV */}
           <p style={{fontSize:9,fontWeight:700,letterSpacing:1.5,color:sub,margin:"12px 0 4px",textTransform:"uppercase"}}>Manage</p>
           {manageNav.map(({icon,label,pg})=>(
             <div key={pg} onClick={()=>setPage(pg)} style={{display:"flex",alignItems:"center",gap:8,padding:"8px 10px",borderRadius:8,marginBottom:1,background:page===pg?"rgba(0,255,135,0.07)":"transparent",borderLeft:page===pg?"2px solid "+G:"2px solid transparent",cursor:"pointer",transition:"all 0.15s"}}>
@@ -582,7 +552,6 @@ export default function ProfitPulse(){
             </div>
           ))}
 
-          {/* QUICK ACTIONS */}
           <div style={{marginTop:"auto",paddingTop:12,borderTop:"1px solid "+border}}>
             <button onClick={()=>setWaModal(true)} style={{width:"100%",marginBottom:5,padding:"7px 0",background:"linear-gradient(135deg,#25D366,#128C7E)",border:"none",borderRadius:7,cursor:"pointer",color:"#fff",fontWeight:700,fontSize:10}}>📱 WhatsApp Alert</button>
             <button onClick={()=>setEmailModal(true)} style={{width:"100%",marginBottom:5,padding:"7px 0",background:"linear-gradient(135deg,#00ff87,#00cc6a)",border:"none",borderRadius:7,cursor:"pointer",color:"#050a14",fontWeight:700,fontSize:10}}>📧 Email Report</button>
@@ -590,10 +559,8 @@ export default function ProfitPulse(){
           </div>
         </aside>
 
-        {/* ══ MAIN CONTENT ══ */}
         <main style={{flex:1,padding:"18px 22px",overflowY:"auto",display:"flex",flexDirection:"column",gap:15}}>
 
-          {/* DASHBOARD */}
           {page==="dashboard"&&<>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
               <div><h1 style={{fontWeight:800,fontSize:20,margin:0,letterSpacing:-0.5}}>{ws?.name} — Overview</h1><p style={{color:sub,fontSize:11,margin:"2px 0 0"}}>{dateFilter} · {user?.role} view{uploadedData?" · Custom data":""}</p></div>
@@ -620,7 +587,6 @@ export default function ProfitPulse(){
               ))}
             </div>
 
-            {/* AI INSIGHTS */}
             <div style={{background:card,border:"1px solid rgba(0,255,135,0.15)",borderRadius:11,padding:20}}>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
                 <div style={{display:"flex",alignItems:"center",gap:8}}>
@@ -698,7 +664,6 @@ export default function ProfitPulse(){
             </div>
           </>}
 
-          {/* AI PAGE */}
           {page==="ai"&&<>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
               <div><h1 style={{fontWeight:800,fontSize:20,margin:0}}>🤖 AI Insights Engine</h1><p style={{color:sub,fontSize:11,marginTop:2}}>Deep analysis for {ws?.name}</p></div>
@@ -736,7 +701,6 @@ export default function ProfitPulse(){
             </div>
           </>}
 
-          {/* FORECAST */}
           {page==="forecast"&&<>
             <div><h1 style={{fontWeight:800,fontSize:20,margin:0}}>🔮 Revenue Forecast</h1><p style={{color:sub,fontSize:11,marginTop:2}}>6-month AI prediction — {ws?.name}</p></div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12}}>
@@ -775,7 +739,6 @@ export default function ProfitPulse(){
             </div>
           </>}
 
-          {/* ALERTS */}
           {page==="alerts"&&<>
             <div><h1 style={{fontWeight:800,fontSize:20,margin:0}}>🚨 Smart Alerts</h1><p style={{color:sub,fontSize:11,marginTop:2}}>{alerts.length} alerts for {ws?.name}</p></div>
             <div style={{display:"flex",flexDirection:"column",gap:10}}>
@@ -792,7 +755,6 @@ export default function ProfitPulse(){
             </div>
           </>}
 
-          {/* ACTIVITY */}
           {page==="activity"&&<>
             <div><h1 style={{fontWeight:800,fontSize:20,margin:0}}>📋 Activity Feed</h1><p style={{color:sub,fontSize:11,marginTop:2}}>Recent events — {ws?.name}</p></div>
             <div style={{display:"grid",gridTemplateColumns:"2fr 1fr",gap:14}}>
@@ -814,7 +776,6 @@ export default function ProfitPulse(){
             </div>
           </>}
 
-          {/* ORDERS */}
           {page==="orders"&&<>
             <div><h1 style={{fontWeight:800,fontSize:20,margin:0}}>🛍️ Orders</h1><p style={{color:sub,fontSize:11,marginTop:2}}>Recent transactions — {ws?.name}</p></div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:4}}>
@@ -852,7 +813,6 @@ export default function ProfitPulse(){
             </div>
           </>}
 
-          {/* CLIENTS */}
           {page==="clients"&&<>
             <div><h1 style={{fontWeight:800,fontSize:20,margin:0}}>👥 Clients</h1><p style={{color:sub,fontSize:11,marginTop:2}}>Customer accounts — {ws?.name}</p></div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:4}}>
@@ -888,7 +848,6 @@ export default function ProfitPulse(){
             </div>
           </>}
 
-          {/* REPORTS */}
           {page==="reports"&&<>
             <div><h1 style={{fontWeight:800,fontSize:20,margin:0}}>📊 Reports</h1><p style={{color:sub,fontSize:11,marginTop:2}}>Export and schedule</p></div>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
@@ -908,7 +867,6 @@ export default function ProfitPulse(){
             </div>
           </>}
 
-          {/* TEAM */}
           {page==="team"&&<>
             <div><h1 style={{fontWeight:800,fontSize:20,margin:0}}>👤 Team</h1><p style={{color:sub,fontSize:11,marginTop:2}}>Role-based access — {ws?.name}</p></div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:14}}>
@@ -919,7 +877,8 @@ export default function ProfitPulse(){
                     <div style={{flex:1}}><p style={{margin:0,fontWeight:700,fontSize:13}}>{u.name}</p><p style={{margin:0,fontSize:10,color:sub,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{em}</p></div>
                     <span style={{fontSize:9,color:sCol(u.role),background:sCol(u.role)+"20",padding:"2px 7px",borderRadius:20,fontWeight:700,flexShrink:0}}>{u.role}</span>
                   </div>
-                  <p style={{fontSize:11,color:sub,margin:"0 0 8px",fontWeight:600,color:text}}>Access ({ROLE_ACCESS[u.role].length} pages):</p>
+                  {/* FIX 2: Removed duplicate color key — was color:sub then color:text, kept only color:text */}
+                  <p style={{fontSize:11,color:text,margin:"0 0 8px",fontWeight:600}}>Access ({ROLE_ACCESS[u.role].length} pages):</p>
                   <div>{ROLE_ACCESS[u.role].slice(0,5).map(pg=><span key={pg} style={{display:"inline-block",margin:"0 4px 4px 0",padding:"2px 7px",background:card2,borderRadius:20,fontSize:9,color:sub}}>{pg}</span>)}{ROLE_ACCESS[u.role].length>5&&<span style={{fontSize:9,color:sub}}>+{ROLE_ACCESS[u.role].length-5} more</span>}</div>
                   {em===user?.email&&<p style={{marginTop:8,marginBottom:0,fontSize:10,color:G,fontWeight:600}}>← You</p>}
                 </div>
@@ -927,7 +886,6 @@ export default function ProfitPulse(){
             </div>
           </>}
 
-          {/* SETTINGS */}
           {page==="settings"&&<>
             <div><h1 style={{fontWeight:800,fontSize:20,margin:0}}>⚙️ Settings</h1><p style={{color:sub,fontSize:11,marginTop:2}}>Account & configuration</p></div>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
