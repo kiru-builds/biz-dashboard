@@ -1,3 +1,8 @@
+![Dashboard](biz-dashboard-1.png)
+![Dashboard](biz-dashboard-2.png)
+![Dashboard](biz-dashboard-3.png)
+
+
 # 📈 ProfitPulse AI — E-Commerce Profit Optimization SaaS
 
 ![ProfitPulse](https://img.shields.io/badge/ProfitPulse-SaaS%20v4.0-00ff87?style=for-the-badge)
@@ -236,6 +241,3 @@ Stack: React · Claude API · Recharts · Vercel
 
 ---
 
-![Dashboard](biz-dashboard-1.png)
-![Dashboard](biz-dashboard-2.png)
-![Dashboard](biz-dashboard-3.png)
