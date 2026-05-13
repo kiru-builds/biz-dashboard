@@ -1,3 +1,7 @@
+##Biz Dashboard
+Modern business analytics dashboard UI.
+
+##Screenshot
 ![Dashboard](biz-dashboard-1.png)
 
 
